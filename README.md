@@ -26,6 +26,7 @@ yt-dlp is a feature-rich command-line audio/video downloader with support for [t
     * [Release Files](#release-files)
     * [Update](#update)
     * [Dependencies](#dependencies)
+    * [Compile GUI](#compile-gui)
     * [Compile](#compile)
 * [USAGE AND OPTIONS](#usage-and-options)
     * [General Options](#general-options)
@@ -255,6 +256,30 @@ To use or redistribute the dependencies, you must agree to their respective lice
 The standalone release binaries are built with the Python interpreter and the packages marked with **\*** included.
 
 If you do not have the necessary dependencies for a task you are attempting, yt-dlp will warn you. All the currently available dependencies are visible at the top of the `--verbose` output
+
+
+## COMPILE GUI
+
+### Build GUI with PyInstaller
+You can build the yt-dlp binary for windows as described in the [Compile](#compile) section.
+
+To compile the yt-dlp-gui binary you first have to compile the basic yt-dlp binary into the "bin" directory located in the root dir by executing the following command:
+
+```
+python -m bundle.pyinstaller --distpath bin
+```
+
+Then use the following command to compile the GUI:
+
+```
+python -m PyInstaller --noconfirm --windowed --name yt-dlp-gui --add-binary "bin\yt-dlp.exe;bin" --add-data "yt_dlp_gui/assets;assets" yt_dlp_gui/main.py
+```
+
+This Command will create the GUI binary as well as all needed files in:
+
+```
+dist/yt-dlp-gui/
+```
 
 
 ## COMPILE
