@@ -10,6 +10,7 @@ from typing import Any
 
 from PySide6.QtCore import QObject, QThread, Signal
 from yt_dlp_gui.config import get_logs_dir, get_yt_dlp_path
+from yt_dlp_gui.config import get_ffmpeg_bin_dir
 
 
 class UpdateWorker(QObject):
@@ -182,12 +183,16 @@ class DownloadWorker(QObject):
         base_template = "%(title)s - %(artist,uploader,channel)s.%(ext)s"
         chapter_template = "%(section_title)s.%(ext)s"
 
+        ffmpeg_dir = get_ffmpeg_bin_dir()
+
         cmd = [
             str(self.exe_path),
             "--newline",
             "--progress",
             "--trim-filenames",
             "200",
+            "--ffmpeg-location",
+            str(ffmpeg_dir),
             "-P",
             self.output_path,
             "-o",
