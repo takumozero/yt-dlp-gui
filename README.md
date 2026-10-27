@@ -272,7 +272,7 @@ python -m bundle.pyinstaller --distpath bin
 Then use the following command to compile the GUI:
 
 ```
-python -m PyInstaller --noconfirm --windowed --name yt-dlp-gui --add-binary "bin\yt-dlp.exe;bin" --add-data "yt_dlp_gui/assets;assets" yt_dlp_gui/main.py
+python -m PyInstaller --noconfirm --windowed --name yt-dlp-gui --add-binary "bin\yt-dlp.exe;bin" --add-data "ffmpeg;ffmpeg" --add-data "yt_dlp_gui/assets;assets" yt_dlp_gui/main.py
 ```
 
 This Command will create the GUI binary as well as all needed files in:

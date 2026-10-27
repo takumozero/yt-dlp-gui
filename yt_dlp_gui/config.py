@@ -41,3 +41,8 @@ def get_assets_dir() -> Path:
 
 def get_yt_dlp_path() -> Path:
     return get_bin_dir() / "yt-dlp.exe"
+
+def get_ffmpeg_bin_dir() -> Path:
+    if getattr(sys, "frozen", False):
+        return get_internal_root() / "ffmpeg" / "bin"
+    return get_app_root() / "ffmpeg" / "bin"
